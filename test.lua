@@ -35,6 +35,7 @@ function test(description, fn)
   local status, errMsg = pcall(fn)
   print(status, errMsg, status == true)
   if status == false then -- true is ok
+    print('fffffffffffffflase')
     reporter({
       errTrace = debug.traceback(err, 2),
       errMsg = errMsg,
