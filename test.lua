@@ -35,8 +35,10 @@ function test(description, fn)
   local status, errMsg = pcall(fn)
   print(status, errMsg, status == true)
   if status == false then -- true is ok
-    print('fffffffffffffflase')
-    local trace = debug.traceback(err, 2) or 'failed to get trace' .. errMsg
+    local trace = debug.traceback(err, 2)
+    if trace == nil then
+      trace = 'a\n\tfail to get trace\n' .. '\t' .. errMsg
+    end
     reporter({
       errTrace = trace,
       errMsg = errMsg,
