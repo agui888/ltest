@@ -1,0 +1,10 @@
+language: nodejs
+
+env:
+  - LUA=""
+  - LUA="luajit"
+
+install:
+  - sudo apt-get install luajit
+
+script: "lua test.lua demo/*"
