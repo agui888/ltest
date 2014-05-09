@@ -1,6 +1,7 @@
 -- simple & pretty lua test
 -- assume lua tests are all sync waterfall (because this will easy..
 
+
 local c = require 'ansicolors'
 
 local OK_COLOR = {'green', 'grey'}
@@ -34,7 +35,6 @@ function test(description, fn)
   local status, errMsg = pcall(fn)
   if status == false then -- true is ok
     local trace = debug.traceback(err, 2)
-    trace = nil
     if trace == nil then
       trace = 'a\n\tfail to get trace\n'
     end
@@ -64,6 +64,8 @@ if #arg > 0 then
 else
   print('no input file')
 end
+
+print(os.execute('lua -v'))
 
 if (EXIT == 1) then
   error() -- simple error ret for ci like travis
