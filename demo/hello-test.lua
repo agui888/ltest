@@ -1,5 +1,5 @@
 test('hello test error', function()
-  error('line2')
+  local a = #nil
 end)
 
 test('hello test ok', function()
