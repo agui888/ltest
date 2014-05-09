@@ -19,7 +19,7 @@ end
 
 local function reporter(o)
   -- errTrace, errMsg, description, duration(no Milliseconds..)
-  if o.errTrace then
+  if o.errTrace ~= nil then
     local index = string.find(o.errTrace, '\n')
     o.errTrace = string.sub(o.errTrace, index + 1, #o.errTrace)
     prettyPrint({'  ✖ ', o.description .. ' ', '\n    ' .. o.errMsg, '\n' .. o.errTrace}, ERR_COLOR)
