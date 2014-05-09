@@ -19,7 +19,6 @@ end
 
 local function reporter(o)
   -- errTrace, errMsg, description, duration(no Milliseconds..)
-  print(o.errTrace)
   if o.errTrace then
     local index = string.find(o.errTrace, '\n')
     o.errTrace = string.sub(o.errTrace, index + 1, #o.errTrace)
@@ -33,11 +32,11 @@ end
 
 function test(description, fn)
   local status, errMsg = pcall(fn)
-  print(status, errMsg, status == true)
   if status == false then -- true is ok
     local trace = debug.traceback(err, 2)
+    trace = nil
     if trace == nil then
-      trace = 'a\n\tfail to get trace\n' .. '\t' .. errMsg
+      trace = 'a\n\tfail to get trace\n'
     end
     reporter({
       errTrace = trace,
