@@ -1,4 +1,10 @@
 LTest
 ===
 
-Simple Lua test
+Simple Lua test tool
+
+### Try
+
+```shell
+lua test.lua demo/*
+```
