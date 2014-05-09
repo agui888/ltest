@@ -20,7 +20,7 @@ end
 local function reporter(o)
   -- errTrace, errMsg, description, duration(no Milliseconds..)
   print(o.errTrace)
-  if o.errTrace ~= nil then
+  if o.errTrace or o.errMsg then
     local index = string.find(o.errTrace, '\n')
     o.errTrace = string.sub(o.errTrace, index + 1, #o.errTrace)
     prettyPrint({'  ✖ ', o.description .. ' ', '\n    ' .. o.errMsg, '\n' .. o.errTrace}, ERR_COLOR)
@@ -37,7 +37,7 @@ function test(description, fn)
   if status == false then -- true is ok
     print('fffffffffffffflase')
     reporter({
-      errTrace = debug.traceback(err, 2),
+      errTrace = debug.traceback(err, 2) or 'err',
       errMsg = errMsg,
       description = description
     })
