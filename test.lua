@@ -19,6 +19,7 @@ end
 
 local function reporter(o)
   -- errTrace, errMsg, description, duration(no Milliseconds..)
+  print(o.errTrace)
   if o.errTrace ~= nil then
     local index = string.find(o.errTrace, '\n')
     o.errTrace = string.sub(o.errTrace, index + 1, #o.errTrace)
