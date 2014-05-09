@@ -59,8 +59,8 @@ else
   print('no input file')
 end
 
+error(3333333)
+
 if (EXIT == 1) then
   error() -- simple error ret for ci like travis
 end
-
-return test
