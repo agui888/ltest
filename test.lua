@@ -33,7 +33,7 @@ end
 function test(description, fn)
   local status, errMsg = pcall(fn)
   print(status, errMsg)
-  if status then -- true is ok
+  if status == true then -- true is ok
     return reporter({description = description})
   end
   reporter({
