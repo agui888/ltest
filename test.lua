@@ -32,15 +32,15 @@ end
 
 function test(description, fn)
   local status, errMsg = pcall(fn)
-  print(status, errMsg)
-  if status == true then -- true is ok
-    reporter({description = description})
+  print(status, errMsg, status == true)
+  if status == false then -- true is ok
+    reporter({
+      errTrace = debug.traceback(err, 2),
+      errMsg = errMsg,
+      description = description
+    })
   else
-  reporter({
-    errTrace = debug.traceback(err, 2),
-    errMsg = errMsg,
-    description = description
-  })
+    reporter({description = description})
   end
 end
 
@@ -60,8 +60,6 @@ if #arg > 0 then
 else
   print('no input file')
 end
-
-error(3333333)
 
 if (EXIT == 1) then
   error() -- simple error ret for ci like travis
