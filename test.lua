@@ -34,13 +34,14 @@ function test(description, fn)
   local status, errMsg = pcall(fn)
   print(status, errMsg)
   if status == true then -- true is ok
-    return reporter({description = description})
-  end
+    reporter({description = description})
+  else
   reporter({
     errTrace = debug.traceback(err, 2),
     errMsg = errMsg,
     description = description
   })
+  end
 end
 
 -- TODO: need cool assert function like assertEqual deepEqual
