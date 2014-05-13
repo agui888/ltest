@@ -52,6 +52,8 @@ end
 
 -- get all file
 
+package.path = package.path .. ';../demo-src/?.lua;./demo-src/?.lua;./demo-test/?.lua'
+
 if #arg > 0 then
   for i = 1, #arg do
     local f = arg[i]
